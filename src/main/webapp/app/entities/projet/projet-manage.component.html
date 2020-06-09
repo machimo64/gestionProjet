@@ -1,0 +1,67 @@
+<button *ngIf="projet" id="ajout-membre" class="btn btn-default float-right" [routerLink]="['/membres', 'projet', projet.id ]">
+    <span  jhiTranslate="gestionApp.membres.home.createLabel">
+            Ressources
+            </span>
+</button>
+<h2 *ngIf="projet">{{ projet.model }}</h2>
+<br>
+<div [ngSwitch]="isMembre">
+    <div *ngSwitchCase="true" class="row flex-row flex-nowrap" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="this.listes" (cdkDropListDropped)="changeListe($event)">
+        <div class="col-3" *ngFor="let liste of this.listes" cdkDrag>
+            <div class="box box-aqua">
+                <div class="box-header ui-sortable-handle">
+                    <i class="ion ion-clipboard"></i>
+                    <label for="{{ liste.id }}"></label><input class="box-title" id="{{ liste.id }}" (click)="getListe(liste.id)" (blur)="changeTitre($event)" value="{{liste.titre}}" />
+                    <span class="text"></span>
+                    <div class="box-tools pull-right">
+                        <ul class="pagination pagination-sm inline">
+                            <li><a (click)="deleteListe(liste)">X</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul cdkDropList id="{{liste.id}}" class="todo-list ui-sortable" [cdkDropListData]="this.tableauTaches.get(liste.id)" (cdkDropListDropped)="changeTache($event)" [cdkDropListConnectedTo]="getListesConnected(liste.id)">
+                        <li  *ngFor="let tache of this.tableauTaches.get(liste.id)"  cdkDrag id="{{ tache.id }}">
+                            <span class="text">{{ tache.titre }}</span>
+                            <small class="label label-warning"><i class="fa fa-clock-o"></i>{{ tache.dateFin | date:'mediumDate' }}</small>
+                            <div class="tools">
+                                <i class="fa fa-edit" [routerLink]="['/tache', tache.id, 'view' ]"></i>
+                                <i class="fa fa-trash-o" (click)="deleteTache(tache)"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box-footer clearfix no-border">
+                    <button type="button" class="btn btn-default fa-pull-left" [routerLink]="['/liste', liste.id, 'newTache']"><i class="fa fa-plus"></i> Ajouter tache</button>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer clearfix no-border" *ngIf="projet">
+            <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-liste" [routerLink]="['/projet', projet.id, 'newListe']">
+                <fa-icon icon="plus"></fa-icon>
+            </button>
+        </div>
+    </div>
+    <div *ngSwitchCase="false" class="row flex-row flex-nowrap">
+        <div class="col-3" *ngFor="let liste of this.listes">
+            <div class="box box-aqua">
+                <div class="box-header ui-sortable-handle">
+                    <i class="ion ion-clipboard"></i>
+                    <label for="{{ liste.id }}"></label><span class="box-title">{{liste.titre}}</span>
+                    <span class="text"></span>
+                </div>
+                <div class="box-body">
+                    <ul  class="todo-list ui-sortable">
+                        <li  *ngFor="let tache of this.tableauTaches.get(liste.id)">
+                            <span class="text">{{ tache.titre }}</span>
+                            <small class="label label-warning"><i class="fa fa-clock-o"></i>{{ tache.dateFin | date:'mediumDate' }}</small>
+                            <div class="tools">
+                                <i class="fa fa-edit" [routerLink]="['/tache', tache.id, 'view' ]"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

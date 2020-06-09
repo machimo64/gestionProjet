@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="commentaire">
+            <h2><span jhiTranslate="gestionApp.commentaire.detail.title">Commentaire</span> {{ commentaire.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionApp.commentaire.contenu">Contenu</span></dt>
+                <dd>
+                    <span>{{ commentaire.contenu }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.commentaire.dateHeure">Date Heure</span></dt>
+                <dd>
+                    <span>{{ commentaire.dateHeure }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.commentaire.user">User</span></dt>
+                <dd>
+                    {{ commentaire.user?.login }}
+                </dd>
+                <dt><span jhiTranslate="gestionApp.commentaire.tache">Tache</span></dt>
+                <dd>
+                    <div *ngIf="commentaire.tache">
+                        <a [routerLink]="['/tache', commentaire.tache?.id, 'view']">{{ commentaire.tache?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/commentaire', commentaire.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

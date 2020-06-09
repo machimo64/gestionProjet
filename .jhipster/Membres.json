@@ -1,0 +1,42 @@
+{
+    "name": "Membres",
+    "fields": [
+        {
+            "fieldName": "role",
+            "fieldType": "Role",
+            "fieldValues": "MODIFIER,CONSULTER",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "membres",
+            "relationshipValidateRules": "required",
+            "relationshipName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "projet",
+            "otherEntityRelationshipName": "membres",
+            "relationshipValidateRules": "required",
+            "relationshipName": "projet",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200423094100",
+    "entityTableName": "membres",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

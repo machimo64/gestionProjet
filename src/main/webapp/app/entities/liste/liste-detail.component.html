@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="liste">
+            <h2><span jhiTranslate="gestionApp.liste.detail.title">Liste</span> {{ liste.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionApp.liste.titre">Titre</span></dt>
+                <dd>
+                    <span>{{ liste.titre }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.liste.position">Position</span></dt>
+                <dd>
+                    <span>{{ liste.position }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.liste.projet">Projet</span></dt>
+                <dd>
+                    <div *ngIf="liste.projet">
+                        <a [routerLink]="['/projet', liste.projet?.id, 'view']">{{ liste.projet?.titre }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/liste', liste.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

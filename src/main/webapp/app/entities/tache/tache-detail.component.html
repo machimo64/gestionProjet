@@ -1,0 +1,94 @@
+<div *ngIf="tache" style="overflow: hidden">
+    <h2><span jhiTranslate="gestionApp.tache.detail.title">Tache</span> {{ tache.titre }}</h2>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionApp.tache.dateDebut">Date Debut</span></dt>
+                <dd>
+                    <span>{{ tache.dateDebut | date:'mediumDate' }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.tache.dateFin">Date Fin</span></dt>
+                <dd>
+                    <span>{{ tache.dateFin | date:'mediumDate' }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.tache.description">Description</span></dt>
+                <dd>
+                    <span>{{ tache.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.tache.poids">Poids</span></dt>
+                <dd>
+                    <span>{{ tache.poids }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.tache.categorie">Categorie</span></dt>
+                <dd>
+                    <span>{{ tache.categorie }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button" *ngIf="isMembre"
+                    [routerLink]="['/tache', tache.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+        <div class="col-6" style="overflow: hidden">
+            <div *ngIf="participants">
+                <h2></h2>
+                <hr>
+                <dt><span jhiTranslate="gestionApp.tache.participants">Membres</span></dt>
+                <div *ngIf="participants.length > 0">
+                    <div *ngFor="let participant of this.participants">
+                        <span>{{ participant.user.firstName + ' ' + participant.user.lastName}}</span>
+                        <fa-icon icon="times" (click)="deleteParticipant(participant)"></fa-icon>
+                    </div>
+                </div>
+                <div *ngIf="participants.length === 0">
+                    <span>Aucun membre ne participe à cette tâche pour l'instant</span>
+                </div>
+                <fa-icon *ngIf="tache.id && isMembre" icon="plus" (click)="addParticipant(tache.id)"></fa-icon>
+            </div>
+            <br>
+            <h2></h2>
+            <dt><span jhiTranslate="gestionApp.tache.commentaires">Commentaires</span></dt>
+            <div *ngIf="commentaires && user" style="overflow-y: scroll; max-height: 50%">
+                <div *ngIf="commentaires.length > 0">
+                    <div *ngFor="let commentaire of commentaires">
+                        <div class="card" id="{{commentaire.id}}div">
+                            <div class="card-header">
+                                {{ commentaire.user.firstName + " " + commentaire.user.lastName + ", le " + commentaire.dateHeure.format('D-MM-YYYY à h:mm')}}
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text" id="{{commentaire.id}}p">{{ commentaire.contenu }}</p>
+                                <label><textarea class="card-text" id="{{commentaire.id}}in" hidden [value]="commentaire.contenu" (keyup.enter)="confirmModif(commentaire)"></textarea></label>
+                                <div *ngIf="compareUsers(user, commentaire.user)">
+                                    <a (click)="modifierCom(commentaire.id)" id="{{commentaire.id}}btm" class="btn btn-secondary">Modifier</a>
+                                    <a class="btn btn-secondary" id="{{commentaire.id}}bts" (click)="deleteCommentaire(commentaire)">Supprimer</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <br>
+                </div>
+                <div *ngIf="commentaires.length === 0">
+                    <span>Aucun commentaires pour l'instant</span>
+                </div>
+            </div>
+            <br>
+            <div>
+                <textarea type="text" class="form-control" placeholder="Votre commentaire..." id="newCommentaire" (keyup.enter)="addCommentaire()"></textarea>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

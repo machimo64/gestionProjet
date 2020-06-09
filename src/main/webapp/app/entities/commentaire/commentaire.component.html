@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionApp.commentaire.home.title">Commentaires</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-commentaire" [routerLink]="['/commentaire/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionApp.commentaire.home.createLabel">
+            Create a new Commentaire
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="commentaires?.length === 0">
+        <span jhiTranslate="gestionApp.commentaire.home.notFound">No commentaires found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="commentaires?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionApp.commentaire.contenu">Contenu</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionApp.commentaire.dateHeure">Date Heure</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionApp.commentaire.user">User</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionApp.commentaire.tache">Tache</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let commentaire of commentaires ;trackBy: trackId">
+                    <td><a [routerLink]="['/commentaire', commentaire.id, 'view']">{{ commentaire.id }}</a></td>
+                    <td>{{ commentaire.contenu }}</td>
+                    <td>{{ commentaire.dateHeure | date:'medium' }}</td>
+                    <td>
+                        {{ commentaire.user?.login }}
+                    </td>
+                    <td>
+                        <div *ngIf="commentaire.tache">
+                            <a [routerLink]="['/tache', commentaire.tache?.id, 'view']" >{{ commentaire.tache?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/commentaire', commentaire.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/commentaire', commentaire.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(commentaire)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

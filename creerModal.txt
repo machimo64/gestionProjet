@@ -1,0 +1,4 @@
+Pour créer un modal : 
+
+On créer le component (html + ts)
+Créer fonction dans le component parent (this.modalService.open)

@@ -1,0 +1,42 @@
+{
+    "name": "Liste",
+    "fields": [
+        {
+            "fieldName": "titre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "position",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "projet",
+            "otherEntityRelationshipName": "liste",
+            "relationshipValidateRules": "required",
+            "relationshipName": "projet",
+            "otherEntityField": "titre"
+        }
+    ],
+    "changelogDate": "20200423094300",
+    "entityTableName": "liste",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
+}

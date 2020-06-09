@@ -1,0 +1,48 @@
+{
+    "name": "Commentaire",
+    "fields": [
+        {
+            "fieldName": "contenu",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+	{
+            "fieldName": "dateHeure",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "commentaire",
+            "relationshipValidateRules": "required",
+            "relationshipName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tache",
+            "otherEntityRelationshipName": "commentaire",
+            "relationshipValidateRules": "required",
+            "relationshipName": "tache",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200423094500",
+    "entityTableName": "commentaire",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

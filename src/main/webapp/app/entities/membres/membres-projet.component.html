@@ -1,0 +1,65 @@
+<div>
+    <h2 id="page-heading" *ngIf="idProjet">
+        <span jhiTranslate="gestionApp.membres.home.title">Ressources</span>
+        <button  id="ajout-membre" class="btn btn-default float-right" [routerLink]="['/projet', idProjet, 'manage' ]">
+            <fa-icon icon="arrow-left"></fa-icon>
+            <span jhiTranslate="gestionApp.projet.home.goBackLabel">
+                Go back
+            </span>
+        </button>
+        <button *ngIf="isMembre" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-membres" (click)="addMembres(idProjet)">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionApp.membres.home.createLabel">
+            Create a new Membres
+            </span>
+        </button>
+    </h2>
+
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="membres?.length === 0">
+        <span jhiTranslate="gestionApp.membres.home.notFound">No membres found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="membres?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+                <th scope="col" ><span jhiTranslate="gestionApp.membres.user">User</span></th>
+                <th scope="col" ><span jhiTranslate="userManagement.lastName">Nom</span></th>
+                <th scope="col" ><span jhiTranslate="userManagement.firstName">Prenom</span></th>
+                <th scope="col" ><span jhiTranslate="gestionApp.membres.role">Role</span></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let membres of membres">
+                <td>{{ membres.user?.login }}</td>
+                <td>{{ membres.user?.lastName }}</td>
+                <td>{{ membres.user?.firstName }}</td>
+                <td jhiTranslate="{{ 'gestionApp.Role.' + membres.role }}">{{ membres.role }}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+
+                        <button *ngIf="isMembre" type="submit"
+                                [routerLink]="['/membres', membres.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon icon="pencil-alt"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+
+                        <button *ngIf="isMembre" type="submit" (click)="delete(membres)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon icon="times"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+{
+    "name": "Tache",
+    "fields": [
+        {
+            "fieldName": "titre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateDebut",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateFin",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "etat",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "poids",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "categorie",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "position",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "liste",
+            "otherEntityRelationshipName": "tache",
+            "relationshipValidateRules": "required",
+            "relationshipName": "liste",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200423094400",
+    "entityTableName": "tache",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
+}
