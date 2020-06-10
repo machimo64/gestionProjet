@@ -1,0 +1,33 @@
+{
+    "name": "Participant",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "participant",
+            "relationshipValidateRules": "required",
+            "relationshipName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tache",
+            "otherEntityRelationshipName": "participant",
+            "relationshipValidateRules": "required",
+            "relationshipName": "tache",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200423094200",
+    "entityTableName": "participant",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

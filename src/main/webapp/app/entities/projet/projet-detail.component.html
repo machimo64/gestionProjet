@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="projet">
+            <h2><span jhiTranslate="gestionApp.projet.detail.title">Projet</span> {{ projet.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionApp.projet.titre">Titre</span></dt>
+                <dd>
+                    <span>{{ projet.titre }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.projet.dateDebut">Date Debut</span></dt>
+                <dd>
+                    <span>{{ projet.dateDebut }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.projet.dateFin">Date Fin</span></dt>
+                <dd>
+                    <span>{{ projet.dateFin }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.projet.description">Description</span></dt>
+                <dd>
+                    <span>{{ projet.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.projet.etat">Etat</span></dt>
+                <dd>
+                    <span>{{ projet.etat }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.projet.user">User</span></dt>
+                <dd>
+                    {{ projet.user?.login }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/projet', projet.id, 'manage']"
+                    class="btn btn-secondary">
+                <fa-icon icon="eye"></fa-icon>&nbsp;<span jhiTranslate="entity.action.manage">Gerer</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/projet', projet.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

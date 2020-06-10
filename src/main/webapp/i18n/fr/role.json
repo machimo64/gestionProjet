@@ -1,0 +1,9 @@
+{
+  "gestionApp": {
+    "Role": {
+      "null": "",
+      "MODIFIER": "MODIFIER",
+      "CONSULTER": "CONSULTER"
+    }
+  }
+}

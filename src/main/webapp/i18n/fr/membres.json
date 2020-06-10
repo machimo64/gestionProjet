@@ -1,0 +1,26 @@
+{
+  "gestionApp": {
+    "membres": {
+      "home": {
+        "title": "Ressources",
+        "createLabel": "Ressources",
+        "createOrEditLabel": "Créer ou éditer un Membre",
+        "changeRoleLabel": "Modifier le role du membre {{ firstName }} {{ lastName }}",
+        "addLabel": "Ajouter un membre",
+        "notFound": "Aucun membre trouvé"
+      },
+      "created": "Un nouveau membre a été créé avec l'identifiant {{ param }}",
+      "updated": "Le membre avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le membre avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le membre {{ firstName }} {{ lastName }} ?"
+      },
+      "detail": {
+        "title": "Membres"
+      },
+      "role": "Role",
+      "user": "Utilisateur",
+      "projet": "Projet"
+    }
+  }
+}

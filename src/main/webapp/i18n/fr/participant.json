@@ -1,0 +1,23 @@
+{
+  "gestionApp": {
+    "participant": {
+      "home": {
+        "title": "Participants",
+        "createLabel": "Créer un nouveau Participant",
+        "createOrEditLabel": "Créer ou éditer un Participant",
+        "notFound": "Aucun Participant trouvé"
+      },
+      "created": "Un nouveau Participant a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Participant avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Participant avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le membre {{ firstName }} {{ lastName }} ?"
+      },
+      "detail": {
+        "title": "Participant"
+      },
+      "user": "User",
+      "tache": "Tache"
+    }
+  }
+}

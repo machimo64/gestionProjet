@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="membres">
+            <h2><span jhiTranslate="gestionApp.membres.detail.title">Membres</span> {{ membres.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionApp.membres.role">Role</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'gestionApp.Role.' + membres.role }}">{{ membres.role }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionApp.membres.user">User</span></dt>
+                <dd>
+                    {{ membres.user?.login }}
+                </dd>
+                <dt><span jhiTranslate="gestionApp.membres.projet">Projet</span></dt>
+                <dd>
+                    <div *ngIf="membres.projet">
+                        <a [routerLink]="['/projet', membres.projet?.id, 'view']">{{ membres.projet?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/membres', membres.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

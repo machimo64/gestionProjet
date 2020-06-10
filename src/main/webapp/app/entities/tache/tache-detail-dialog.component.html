@@ -1,0 +1,52 @@
+<div *ngIf="tache">
+    <div class="modal-header">
+        <h4 class="modal-title"><span jhiTranslate="gestionApp.tache.detail.title">Tache</span> {{ tache.titre }}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+        <div class="row justify-content-center">
+            <div class="col-8">
+
+                <dl class="row-md jh-entity-details">
+                    <dt><span jhiTranslate="gestionApp.tache.titre">Titre</span></dt>
+                    <dd>
+                        <span>{{ tache.titre }}</span>
+                    </dd>
+                    <dt><span jhiTranslate="gestionApp.tache.dateDebut">Date Debut</span></dt>
+                    <dd>
+                        <span *ngIf="tache.dateDebut">{{ tache.dateDebut | date:'mediumDate' }}</span>
+                    </dd>
+                    <dt><span jhiTranslate="gestionApp.tache.dateFin">Date Fin</span></dt>
+                    <dd>
+                        <span *ngIf="tache.dateFin">{{ tache.dateFin | date:'mediumDate' }}</span>
+                    </dd>
+                    <dt><span jhiTranslate="gestionApp.tache.description">Description</span></dt>
+                    <dd>
+                        <span>{{ tache.description }}</span>
+                    </dd>
+                    <dt><span jhiTranslate="gestionApp.tache.etat">Etat</span></dt>
+                    <dd>
+                        <span>{{ this.getEtat(tache.etat) }}</span>
+                    </dd>
+                    <dt><span jhiTranslate="gestionApp.tache.poids">Poids</span></dt>
+                    <dd>
+                        <span>{{ tache.poids }}</span>
+                    </dd>
+                    <dt><span jhiTranslate="gestionApp.tache.categorie">Categorie</span></dt>
+                    <dd>
+                        <span>{{ tache.categorie }}</span>
+                    </dd>
+                </dl>
+
+                <button type="button"
+                        [routerLink]="['/tache', tache.id, 'edit']"
+                        (click)="cancel()"
+                        class="btn btn-primary">
+                    <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

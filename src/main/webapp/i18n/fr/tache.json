@@ -1,0 +1,32 @@
+{
+  "gestionApp": {
+    "tache": {
+      "home": {
+        "title": "Taches",
+        "createLabel": "Créer une nouvele Tache",
+        "createOrEditLabel": "Créer ou éditer une Tache",
+        "notFound": "Aucune Tache trouvé"
+      },
+      "created": "Une nouvelle Tache a été créée avec l'identifiant {{ param }}",
+      "updated": "La Tache avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "La Tache avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer la Tache {{ titre }} ?"
+      },
+      "detail": {
+        "title": "Tache"
+      },
+      "titre": "Titre",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "description": "Description",
+      "etat": "Etat",
+      "poids": "Poids",
+      "categorie": "Categorie",
+      "position": "Position",
+      "liste": "Liste",
+      "participants": "Membres",
+      "commentaires": "Commentaires"
+    }
+  }
+}

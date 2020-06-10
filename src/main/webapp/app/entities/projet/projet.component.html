@@ -1,0 +1,48 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionApp.projet.home.title">Mes Projets</span>
+    </h2>
+    <br>
+    <!-- <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <div class="alert alert-warning" id="no-result" *ngIf="projetsMembre?.length === 0">
+        <span jhiTranslate="gestionApp.projet.home.notFound">No projets found</span>
+    </div> -->
+    <div class="card-group" *ngIf="projetsMembre">
+        <div *ngFor="let projet of projetsMembre" [routerLink]="['/projet', projet.id, 'manage']" class="col-sm-3">
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem; cursor: pointer">
+                <div class="card-body">
+                    <h5 class="card-title">{{ projet.titre }}</h5>
+                    <p class="card-text">{{ projet.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div id="jh-create-entity" [routerLink]="['/projet/new']" class="card text-white bg-secondary mb-3" style="max-width: 18rem; cursor: pointer; text-align: center; text-align: center">
+            <div class="card-body">
+                <p class="card-text">Créer un projet</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <br>
+<div>
+    <h2 id="page-headingNotMembre">
+        <span jhiTranslate="gestionApp.projet.home.titleNotMembre">Autres Projets</span>
+    </h2>
+    <br>
+    <div class="alert alert-warning" id="no-result-1" *ngIf="projetsNotMembre?.length === 0">
+        <span jhiTranslate="gestionApp.projet.home.notFound">No projets found</span>
+    </div>
+    <div class="card-group">
+        <div *ngFor="let projet of projetsNotMembre" [routerLink]="['/projet', projet.id, 'manage']" class="col-sm-3">
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem; cursor: pointer">
+                <div class="card-body">
+                    <h5 class="card-title">{{ projet.titre }}</h5>
+                    <p class="card-text">{{ projet.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+

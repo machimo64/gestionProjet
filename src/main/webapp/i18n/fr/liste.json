@@ -1,0 +1,24 @@
+{
+  "gestionApp": {
+    "liste": {
+      "home": {
+        "title": "Listes",
+        "createLabel": "Créer une nouvelle Liste",
+        "createOrEditLabel": "Créer ou éditer une Liste",
+        "notFound": "Aucun Liste trouvé"
+      },
+      "created": "Une nouvelle Liste a été créée avec l'identifiant {{ param }}",
+      "updated": "Le Liste avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Liste avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer la Liste {{ titre }} ?"
+      },
+      "detail": {
+        "title": "Liste"
+      },
+      "titre": "Titre",
+      "position": "Position",
+      "projet": "Projet"
+    }
+  }
+}

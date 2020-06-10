@@ -1,0 +1,31 @@
+{
+  "gestionApp": {
+    "projet": {
+      "home": {
+        "title": "Projets",
+        "titleMembre": "Projets",
+        "titleNotMembre": "Autres Projets",
+        "createLabel": "Créer un nouveau Projet",
+        "createOrEditLabel": "Créer ou éditer un Projet",
+        "notFound": "Aucun Projet trouvé",
+        "goBackLabel": "Retour"
+      },
+      "created": "Un nouveau Projet a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Projet avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Projet avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Projet {{ id }} ?"
+      },
+      "detail": {
+        "title": "Projet"
+      },
+      "titre": "Titre",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "description": "Description",
+      "etat": "Etat",
+      "model": "Modèle",
+      "user": "Chef de projet"
+    }
+  }
+}
