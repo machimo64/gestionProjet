@@ -56,7 +56,6 @@ export class ProjetUpdateComponent implements OnInit {
       this.updateForm(projet);
       this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
     });
-    console.log("test");
   }
 
 

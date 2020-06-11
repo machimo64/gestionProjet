@@ -22,7 +22,7 @@
                         </small>
                     </div>
                 </div>
-                {{today | date:'yyyy-MM-dd'}}
+                <!-- {{today | date:'yyyy-MM-dd'}} -->
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionApp.projet.dateDebut" for="field_dateDebut">Date Debut</label>
                     <div class="input-group">
@@ -69,11 +69,11 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+               <!-- ><div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionApp.projet.etat" for="field_etat">Etat</label>
                     <input type="checkbox" class="form-control" name="etat" id="field_etat"
                            formControlName="etat"/>
-                </div>
+                </div> -->
 
                 <div class="form-group" *ngIf="this.user">
                     <label class="form-control-label" jhiTranslate="gestionApp.projet.user" for="field_user">User</label>

@@ -84,7 +84,6 @@ public class ProjetResource {
         });
 
         if (projet.getModele().equals("Agile")){
-            System.out.println("**************************************************************");
             Liste stories = new Liste();
             stories.setProjet(projet);stories.setTitre("Stories");stories.setPosition(1);
             listeRepository.save(stories);
@@ -93,12 +92,16 @@ public class ProjetResource {
             todo.setProjet(projet);todo.setTitre("To Do");todo.setPosition(2);
             listeRepository.save(todo);
 
-            Liste verify = new Liste();
-            verify.setProjet(projet);verify.setTitre("Verify");verify.setPosition(3);
-            listeRepository.save(verify);
+            Liste inProgress = new Liste();
+            inProgress.setProjet(projet);inProgress.setTitre("In Progress");inProgress.setPosition(3);
+            listeRepository.save(inProgress);
+
+            Liste test = new Liste();
+            test.setProjet(projet);test.setTitre("Test");test.setPosition(4);
+            listeRepository.save(test);
 
             Liste done = new Liste();
-            done.setProjet(projet);done.setTitre("Done");done.setPosition(4);
+            done.setProjet(projet);done.setTitre("Done");done.setPosition(5);
             listeRepository.save(done);
         }
 
