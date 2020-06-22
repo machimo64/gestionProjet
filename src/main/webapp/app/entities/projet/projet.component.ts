@@ -13,14 +13,14 @@ import { ProjetDeleteDialogComponent } from './projet-delete-dialog.component';
   templateUrl: './projet.component.html'
 })
 export class ProjetComponent implements OnInit, OnDestroy {
-  projetsMembre?: IProjet[];
+  projets?: IProjet[];
   eventSubscriber?: Subscription;
 
   constructor(protected projetService: ProjetService, protected eventManager: JhiEventManager, protected modalService: NgbModal) {}
 
   loadAll(): void {
     this.projetService.queryMembre().subscribe((res: HttpResponse<IProjet[]>) => {
-      (this.projetsMembre = res.body || [])
+      (this.projets = res.body || [])
       console.log(res);
     });
   }
