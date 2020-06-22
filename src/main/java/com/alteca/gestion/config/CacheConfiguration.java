@@ -48,6 +48,9 @@ public class CacheConfiguration {
             createCache(cm, com.alteca.gestion.domain.Liste.class.getName());
             createCache(cm, com.alteca.gestion.domain.Tache.class.getName());
             createCache(cm, com.alteca.gestion.domain.Commentaire.class.getName());
+            createCache(cm, com.alteca.gestion.domain.Fichier.class.getName());
+            createCache(cm, com.alteca.gestion.domain.TypeNotification.class.getName());
+            createCache(cm, com.alteca.gestion.domain.Notification.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

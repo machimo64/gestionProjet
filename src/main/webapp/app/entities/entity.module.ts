@@ -27,6 +27,18 @@ import { RouterModule } from '@angular/router';
       {
         path: 'commentaire',
         loadChildren: () => import('./commentaire/commentaire.module').then(m => m.GestionCommentaireModule)
+      },
+      {
+        path: 'fichier',
+        loadChildren: () => import('./fichier/fichier.module').then(m => m.GestionFichierModule)
+      },
+      {
+        path: 'type-notification',
+        loadChildren: () => import('./type-notification/type-notification.module').then(m => m.GestionTypeNotificationModule)
+      },
+      {
+        path: 'notification',
+        loadChildren: () => import('./notification/notification.module').then(m => m.GestionNotificationModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

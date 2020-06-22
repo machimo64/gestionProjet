@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-fichier-heading" jhiTranslate="gestionApp.fichier.home.createOrEditLabel">Create or edit a Fichier</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionApp.fichier.fichier" for="field_fichier">Fichier</label>
+                    <div>
+                        <div *ngIf="editForm.get('fichier')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('fichierContentType')!.value, editForm.get('fichier')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{ editForm.get('fichierContentType')!.value }}, {{ byteSize(editForm.get('fichier')!.value) }}</span>
+                            <button type="button" (click)="editForm.patchValue({fichier: null});editForm.patchValue({fichierContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_fichier" (change)="setFileData($event, 'fichier', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="fichier" id="field_fichier"
+                           formControlName="fichier"/>
+                    <input type="hidden" class="form-control" name="fichierContentType" id="field_fichierContentType"
+                           formControlName="fichierContentType" />
+                    <div *ngIf="editForm.get('fichier')!.invalid && (editForm.get('fichier')!.dirty || editForm.get('fichier')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fichier')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionApp.fichier.membres" for="field_membres">Membres</label>
+                    <select class="form-control" id="field_membres" name="membres" formControlName="membres">
+                        <option *ngIf="!editForm.get('membres')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="membresOption.id === editForm.get('membres')!.value?.id ? editForm.get('membres')!.value : membresOption" *ngFor="let membresOption of membres; trackBy: trackById">{{ membresOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('membres')!.invalid && (editForm.get('membres')!.dirty || editForm.get('membres')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('membres')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionApp.fichier.tache" for="field_tache">Tache</label>
+                    <select class="form-control" id="field_tache" name="tache" formControlName="tache">
+                        <option *ngIf="!editForm.get('tache')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="tacheOption.id === editForm.get('tache')!.value?.id ? editForm.get('tache')!.value : tacheOption" *ngFor="let tacheOption of taches; trackBy: trackById">{{ tacheOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('tache')!.invalid && (editForm.get('tache')!.dirty || editForm.get('tache')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('tache')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

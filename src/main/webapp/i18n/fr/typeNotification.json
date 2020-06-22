@@ -1,0 +1,23 @@
+{
+  "gestionApp": {
+    "typeNotification": {
+      "home": {
+        "title": "TypeNotifications",
+        "createLabel": "Créer un nouveau Type Notification",
+        "createOrEditLabel": "Créer ou éditer un Type Notification",
+        "notFound": "Aucun Type Notification trouvé"
+      },
+      "created": "Un nouveau Type Notification a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Notification avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Notification avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Type Notification {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Notification"
+      },
+      "nom": "Nom",
+      "contenu": "Contenu"
+    }
+  }
+}

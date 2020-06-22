@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-notification-heading" jhiTranslate="gestionApp.notification.home.createOrEditLabel">Create or edit a Notification</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionApp.notification.emetteur" for="field_emetteur">Emetteur</label>
+                    <select class="form-control" id="field_emetteur" name="emetteur" formControlName="emetteur">
+                        <option *ngIf="!editForm.get('emetteur')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="userOption.id === editForm.get('emetteur')!.value?.id ? editForm.get('emetteur')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.login }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('emetteur')!.invalid && (editForm.get('emetteur')!.dirty || editForm.get('emetteur')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('emetteur')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionApp.notification.destinataire" for="field_destinataire">Destinataire</label>
+                    <select class="form-control" id="field_destinataire" name="destinataire" formControlName="destinataire">
+                        <option *ngIf="!editForm.get('destinataire')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="userOption.id === editForm.get('destinataire')!.value?.id ? editForm.get('destinataire')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.login }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('destinataire')!.invalid && (editForm.get('destinataire')!.dirty || editForm.get('destinataire')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('destinataire')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionApp.notification.typeNotification" for="field_typeNotification">Type Notification</label>
+                    <select class="form-control" id="field_typeNotification" name="typeNotification" formControlName="typeNotification">
+                        <option *ngIf="!editForm.get('typeNotification')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="typeNotificationOption.id === editForm.get('typeNotification')!.value?.id ? editForm.get('typeNotification')!.value : typeNotificationOption" *ngFor="let typeNotificationOption of typenotifications; trackBy: trackById">{{ typeNotificationOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('typeNotification')!.invalid && (editForm.get('typeNotification')!.dirty || editForm.get('typeNotification')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('typeNotification')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
